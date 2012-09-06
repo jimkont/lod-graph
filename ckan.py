@@ -17,6 +17,7 @@ from datetime import datetime
 
 LOG_FILE = "ckan.log"
 LOG_LEVEL = logging.INFO
+CKAN_GROUP = 'group/linguistics'
 
 
 def main(argv):
@@ -43,7 +44,7 @@ def lod_packages():
     log = logging.getLogger()
     packages = []
     count = 0
-    for package in ckan('group/lodcloud')['packages']:
+    for package in ckan(CKAN_GROUP)['packages']:
         package_info = ckan('package/%s' % package)
         if package_info == None:
             log.error("unable to retrieve package info for %s" % package)
